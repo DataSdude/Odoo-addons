@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <!-- Sequence for Appointment -->
+    <record id="seq_appointment" model="ir.sequence">
+        <field name="name">Appointment Sequence</field>
+        <field name="code">appointment.sequence</field>
+        <field name="prefix">APT</field> <!-- Optional: prefix for the sequence -->
+        <field name="padding">4</field> <!-- The number of digits in the sequence -->
+        <field name="implementation">standard</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_patient_user,access.patient.user,model_patient,group_hospital_receptionist,1,0,0,0
+access_patient_manager,access.patient.manager,model_patient,group_hospital_receptionist,1,1,1,1
+
+access_appointment_user,access.appointment.user,model_appointment,base.group_user,1,0,0,0
+access_appointment_manager,access.appointment.manager,model_appointment,base.group_system,1,1,1,1
+
+access_patient_tag_user,access.patient.tag.user,model_patient_tag,group_hospital_doctor,1,0,0,0
+access_patient_tag_manager,access.patient.tag.manager,model_patient_tag,group_hospital_doctor,1,1,1,1
+
+access_appointment_line_user,access.appointment.line.user,model_appointment_line,base.group_user,1,0,0,0
+access_appointment_line_manager,access.appointment.line.manager,model_appointment_line,base.group_system,1,1,1,1

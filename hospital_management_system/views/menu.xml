@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="menu_hospital_root"
+              name="HMS"
+              web_icon="hospital_management_system,static/description/icon.png"
+              sequence="31"
+    />
+    <menuitem id="menu_billing"
+              name="Billing"
+              parent="menu_hospital_root"
+    />
+    <menuitem id="menu_invoicing"
+              name="Invoices"
+              parent="menu_billing"
+              action="account.action_move_out_invoice_type"
+    />
+    <menuitem id="menu_payment"
+              name="Payments"
+              parent="menu_billing"
+              action="account.action_account_payments"
+    />
+    <menuitem id="menu_frontdesk"
+              name="Front Desk"
+              parent="menu_hospital_root"
+    />
+    <menuitem id="menu_appointments"
+              name="Appointments"
+              parent="menu_frontdesk"
+              action="open_view_action_hospital_appointment_form"
+    />
+    <menuitem id="menu_appointments_lines"
+              name="Appointment lines"
+              parent="menu_frontdesk"
+              action="open_view_action_hospital_appointment_line_form"
+    />
+    <menuitem id="menu_patients"
+              name="Patients"
+              parent="menu_frontdesk"
+              action="open_view_action_hospital_patient_form"
+    />
+    <menuitem id="menu_configuration"
+              name="Configuration"
+              sequence="100"
+              parent="menu_hospital_root"
+    />
+    <menuitem id="menu_patient_tag"
+              name="Tags"
+              parent="menu_configuration"
+              action="open_view_action_hospital_patient_tag_tree"
+    />
+
+</odoo>

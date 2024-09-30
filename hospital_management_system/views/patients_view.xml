@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">patient.tree</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient">
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+                <field name="tag_ids" widget="many2many_tags" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">patient.form</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_of_birth"/>
+                        <field name="is_minor" readonly="1"/>
+                        <field name="guardian" invisible="not is_minor"/>
+                    </group>
+                    <group>
+                        <field name="gender"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"
+                           options="{'post_refresh': 'recipients'}"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_patient_search" model="ir.ui.view">
+        <field name="name">patient.search</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <search string="Patient">
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <filter string="Child" name="child" domain="[('tag_ids', '=', 'Child')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="gender" domain="[]" context="{'group_by':'gender'}"/>
+                    <filter string="Patient" name="patient" domain="[]" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="open_view_action_hospital_patient_form" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_patient_search"/>
+        <field name="context">{'search_default_tag_ids': 'Child'}</field>
+        <field name="help" type="html">
+            <p>Create an opportunity to start playing with your pipeline
+                Create a new patient
+            </p>
+        </field>
+    </record>
+
+</odoo>

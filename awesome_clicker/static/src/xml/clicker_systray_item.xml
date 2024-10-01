@@ -3,8 +3,8 @@
     <t t-name="awesome_clicker.ClickerSystray" owl="1">
         <div class="o_nav_entry">
             <span class="text-white">Clicks: <t t-esc="state.value"/></span>
-            <button class="btn btn-secondary" t-on-click="increment">
-                <i class="fa fa-plus"></i>
+            <button id="btn" class="btn btn-secondary" t-on-click="(ev) => increment">
+                <i id="btn" class="fa fa-plus"></i>
             </button>
         </div>
     </t>

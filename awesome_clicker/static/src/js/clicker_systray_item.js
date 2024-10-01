@@ -1,17 +1,26 @@
 /** @odoo-module **/
 
 import { registry } from "@web/core/registry";
-import { Component, useState } from "@odoo/owl";
+import { Component, useState, useExternalListener } from "@odoo/owl";
 
 class ClickerSystray extends Component {
     static template = "awesome_clicker.ClickerSystray";
 
     setup() {
         this.state = useState({ value: 0});
+        useExternalListener(document.body, "click", (ev) => {
+            this.increment(ev);
+        }, {capture: true});
     }
 
-    increment() {
-        this.state.value = this.state.value + 1;
+    increment(ev) {
+        console.log(ev.target.id);
+        if (ev.target.id === 'btn'){
+            this.state.value = this.state.value + 10;
+        }else{
+            this.state.value = this.state.value + 1;
+        }
+        
         if (this.props.onChange) {
             this.props.onChange();
         }

@@ -21,5 +21,5 @@ class ClickerSystray extends Component {
 export const systrayItem = { Component: ClickerSystray };
 
 registry.category("systray").add("awesome_clicker.ClickerSystray", systrayItem, {
-    sequence: 1
+    sequence: 100
 });
